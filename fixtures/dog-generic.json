@@ -1,0 +1,65 @@
+{
+  "meta": { "demo": true, "note": "犬通用食谱合成数据；形状与 cat-weight-loss.json 同一契约（PetArchivesVO 摘要 / AgentRecipeGenerateService 输出 / PetBaseDietaryVO / PetRecipeShareSnapshotVO）。" },
+  "pet": {
+    "name": "旺财",
+    "speciesText": "犬",
+    "breed": "中华田园犬",
+    "stageText": "成年 · 已绝育",
+    "ageMonths": 60,
+    "sexText": "公",
+    "weight": 12.5,
+    "expectWeight": 12.5,
+    "bcs": 5,
+    "howActiveText": "积极",
+    "allergensText": "牛肉疑似软便",
+    "healthText": "健康"
+  },
+  "recipe": {
+    "recipeName": "鸭肉梨子清爽餐",
+    "description": "鸭肉低致敏配梨子清凉，适合易上火体质犬只的日常维持餐",
+    "categories": [
+      { "categoryName": "主肉", "foods": [
+        { "name": "鸭胸肉", "reason": "低脂低致敏蛋白" },
+        { "name": "三文鱼", "reason": "Omega-3 皮肤毛发" }
+      ]},
+      { "categoryName": "碳水蔬果", "foods": [
+        { "name": "糙米", "reason": "缓释能量" },
+        { "name": "雪梨", "reason": "水分与清凉（去核去皮少量）" },
+        { "name": "胡萝卜", "reason": "β-胡萝卜素" }
+      ]}
+    ],
+    "supplementAdvice": "食补优先；定期换蛋白源轮替，降低致敏风险"
+  },
+  "plan": {
+    "weight": 12.5,
+    "energy": 812,
+    "protein": 41,
+    "fat": 15.2,
+    "fiber": 6.5,
+    "calcium": 1.55,
+    "phosphorus": 1.25,
+    "meals": 2
+  },
+  "groups": [
+    { "name": "鸭胸肉", "pct": 45, "g": 280, "items": [ { "n": "鸭胸肉", "g": 220 }, { "n": "三文鱼", "g": 60 } ] },
+    { "name": "碳水蔬果", "pct": 40, "g": 250, "items": [ { "n": "糙米", "g": 140 }, { "n": "胡萝卜", "g": 70 }, { "n": "雪梨", "g": 40 } ] },
+    { "name": "其他", "pct": 15, "g": 95, "items": [ { "n": "鸡肝", "g": 45 }, { "n": "西兰花", "g": 50 } ] }
+  ],
+  "nutrients": [
+    { "name": "粗蛋白", "unit": "g", "intake": 41.2, "recommend": 38.5, "lower": 31, "upper": null, "status": "ok" },
+    { "name": "粗脂肪", "unit": "g", "intake": 15.2, "recommend": 14, "lower": 10.4, "upper": 17.6, "status": "ok" },
+    { "name": "钙", "unit": "g", "intake": 1.55, "recommend": 1.5, "lower": 0.75, "upper": 3.75, "status": "ok" }
+  ],
+  "supplements": [
+    { "n": "蛋黄粉", "d": "每日半勺" }
+  ],
+  "makeTips": [
+    "糙米提前浸泡 2 小时更易消化",
+    "雪梨去核去皮，占比不超过 5%",
+    "换季时观察便便与皮肤反馈再决定是否常驻"
+  ],
+  "weights": {
+    "labels": ["3月", "4月", "5月", "6月", "7月"],
+    "points": [12.8, 12.7, 12.6, 12.55, 12.5]
+  }
+}

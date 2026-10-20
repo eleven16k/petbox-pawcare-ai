@@ -1,0 +1,39 @@
+{
+  "meta": { "demo": true, "note": "食谱分析样例：营养分布 vs 标准区间 + 档位型（序数）数据。形状对齐 PetPooRecordVO（shape 0-6 / color 0-7 / smell 0-4）与 PetBaseDietaryVO。档位型展示必须带方向图例（红线 3）。" },
+  "pet": {
+    "name": "咪咪",
+    "speciesText": "猫",
+    "stageText": "成年 · 已绝育",
+    "weight": 5.2
+  },
+  "recipe": {
+    "recipeName": "被分析的食谱：市售全期猫粮 + 每日鸡胸加餐",
+    "foods": [
+      { "name": "市售成猫粮", "pct": 70 },
+      { "name": "鸡胸肉", "pct": 20 },
+      { "name": "冻干零食", "pct": 10 }
+    ]
+  },
+  "plan": {
+    "weight": 5.2,
+    "energy": 268,
+    "protein": 22.6,
+    "fat": 11.2,
+    "fiber": 1.8,
+    "calcium": 0.61,
+    "phosphorus": 0.55
+  },
+  "nutrients": [
+    { "name": "粗蛋白", "unit": "g", "intake": 22.6, "recommend": 18.8, "lower": 15.1, "upper": null, "status": "ok" },
+    { "name": "粗脂肪", "unit": "g", "intake": 11.2, "recommend": 7.5, "lower": 5.5, "upper": 9.3, "status": "high" },
+    { "name": "膳食纤维", "unit": "g", "intake": 1.8, "recommend": 2.4, "lower": 1.5, "upper": null, "status": "lowerRec" },
+    { "name": "钙磷比", "unit": ":1", "intake": 1.11, "recommend": 1.1, "lower": 1.0, "upper": 1.5, "status": "ok" }
+  ],
+  "pooShape": { "label": "近 7 次便便形状（1水样 2糊 3成型 4干硬）", "points": [3, 3, 2, 3, 2, 2, 2] },
+  "pooColor": { "label": "近 7 次便便颜色（0白 1黄 2土黄 3褐 4深褐 5绿 6黑 7红）", "points": [3, 3, 2, 3, 3, 2, 2] },
+  "pooSmell": { "label": "近 7 次气味（0无 1轻 2明显 3重 4刺鼻）", "points": [1, 2, 2, 1, 2, 2, 3] },
+  "weights": {
+    "labels": ["1月", "2月", "3月", "4月", "5月"],
+    "points": [4.9, 5.0, 5.05, 5.15, 5.2]
+  }
+}

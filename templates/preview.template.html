@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__ · 它盒 PetBox</title>
+<style>
+  /* 宠物信箱（ToThereOn 同源）设计语言 —— 拍板稿：prototypes/它盒全站风格方案-宠物信箱语言.html
+     明信片形态参照 prototypes/宠物训练模块-宠物信箱风原型.html 的 .postcard。
+     MP 端渲染器是语义真相；本文件是同语言的镜像预览。 */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "PingFang SC", "Segoe UI", sans-serif;
+    background: #fafbfc; color: #1a1a1a;
+    display: flex; justify-content: center; padding: 24px 12px;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 信纸卡：米白衬纸 + 内页航空斜纹边框 */
+  .postcard {
+    width: 100%; max-width: 420px;
+    background: #fffdf8;
+    border-radius: 14px; padding: 7px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  }
+  .pc-inner {
+    border: 1.5px solid transparent; border-radius: 9px;
+    padding: 16px 15px 14px;
+    background:
+      linear-gradient(#fffdf8, #fffdf8) padding-box,
+      repeating-linear-gradient(45deg,
+        #7dd3fc 0 7px, #fffdf8 7px 13px,
+        #cbd5e1 13px 20px, #fffdf8 20px 26px);
+  }
+  .pc-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .pc-to { font-family: "Playfair Display", "Songti SC", "STSong", serif; font-size: 15px; color: #1e293b; }
+  .pc-to small {
+    display: block; font-family: system-ui, -apple-system, sans-serif;
+    font-size: 8.5px; color: #94a3b8; margin-top: 3px;
+    letter-spacing: .18em; font-weight: 700;
+  }
+  .stamp {
+    width: 52px; height: 58px; flex: none;
+    border: 1.5px dashed #cbd5e1; border-radius: 6px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    background: #f0f9ff;
+  }
+  .stamp .paw { font-size: 18px; line-height: 1; }
+  .stamp span { font-size: 6.5px; color: #0369a1; font-weight: 800; letter-spacing: .08em; }
+  .stamp .demo-tag {
+    font-size: 6.5px; font-weight: 700; letter-spacing: .05em;
+    padding: 1px 4px; border-radius: 3px;
+    background: #fef3c7; color: #d97706;
+  }
+  .blk { margin-bottom: 8px; }
+  .blk__legend { font-size: 10px; line-height: 1.5; opacity: 0.5; margin-top: 4px; }
+  .blk__title { font-size: 14px; font-weight: 600; margin: 8px 0 4px; color: #1a1a1a; }
+  .stat-grid { display: flex; gap: 6px; }
+  .stat { flex: 1; text-align: center; padding: 8px 4px; border-radius: 8px; background: #f0f9ff; border: 1px solid #e0f2fe; }
+  .stat__num { font-size: 20px; font-weight: 700; line-height: 1.2; color: #0f172a; }
+  .stat__unit { font-size: 12px; font-weight: 400; margin-left: 1px; }
+  .stat__label { font-size: 11px; opacity: 0.6; margin-top: 2px; }
+  .kv { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; }
+  .kv + .kv { border-top: 1px solid #e5e7eb; }
+  .kv__key { opacity: 0.6; }
+  .kv__val { color: #0f172a; font-weight: 500; }
+  .bar-row .bar__top { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; color: #1a1a1a; }
+  .bar__track { height: 7px; border-radius: 4px; background: rgba(0, 0, 0, 0.08); overflow: hidden; }
+  .bar__fill { height: 100%; border-radius: 4px; background: var(--grad-primary, linear-gradient(135deg, #0284c7, #38bdf8)); }
+  .trend__label { font-size: 12px; opacity: 0.6; }
+  .trend__bars { display: flex; align-items: flex-end; gap: 4px; height: 50px; }
+  .trend__col { flex: 1; height: 100%; display: flex; align-items: flex-end; }
+  .trend__bar { width: 100%; border-radius: 3px 3px 1px 1px; border: 1px solid rgba(0, 0, 0, 0.12); }
+  .callout { border-radius: 8px; padding: 8px 10px; font-size: 13px; line-height: 1.5; }
+  .callout--info { background: #f0f9ff; }
+  .callout--warn { background: #fffbeb; }
+  .callout--danger { background: rgba(192, 57, 43, 0.12); color: #7f1d1d; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; color: #0369a1;
+    background: #f0f9ff; border: 1px solid #bae6fd;
+  }
+  .cite { padding: 3px 0; font-size: 11px; opacity: 0.7; }
+  .cite__src { margin-left: 4px; opacity: 0.7; }
+  .tb { font-size: 13px; line-height: 1.6; display: block; color: #1a1a1a; }
+  .divider { height: 1px; background: #e5e7eb; margin: 8px 0; }
+  .quiz__q { font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+  .quiz__opt {
+    display: block; width: 100%; text-align: left; cursor: pointer;
+    padding: 6px 10px; border-radius: 6px; border: 1px solid #e5e7eb;
+    font-size: 13px; margin-bottom: 4px; background: transparent; color: #1a1a1a;
+    font-family: inherit;
+  }
+  .quiz__opt.correct { border-color: #10b981; background: #ecfdf5; }
+  .quiz__opt.wrong { border-color: #d97706; background: #fffbeb; }
+  .quiz__explain { background: #f0f9ff; font-size: 12px; line-height: 1.6; color: #1a1a1a; padding: 6px 10px; border-radius: 6px; margin-top: 4px; display: none; }
+  .pc-foot {
+    margin-top: 12px; padding-top: 8px; border-top: 1px dashed #e5e7eb;
+    font-size: 10px; color: #94a3b8; text-align: center; letter-spacing: .18em; font-weight: 700;
+  }
+</style>
+</head>
+<body>
+  <div class="postcard">
+    <div class="pc-inner">
+      <div class="pc-head">
+        <div class="pc-to">__TO_LINE__<small>FROM TUANHUAN · PETBOX SKILL</small></div>
+        <div class="stamp"><span class="paw">🐾</span><span>PETBOX</span><span class="demo-tag">__DEMO_BADGE__</span></div>
+      </div>
+      __BODY__
+      <div class="pc-foot">它盒 PETBOX · GENERATIVE UI PREVIEW__FOOT_NOTE__</div>
+    </div>
+  </div>
+  <script>
+    // quiz-lite 翻牌（MP 同规则：答过即锁定，正确项恒亮，误选标琥珀）
+    document.querySelectorAll("[data-quiz]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var block = btn.closest("[data-quiz-block]");
+        if (block.dataset.done) return;
+        block.dataset.done = "1";
+        var explain = block.querySelector("[data-explain]");
+        block.querySelectorAll("[data-quiz]").forEach(function (o) {
+          if (o.dataset.correct === "true") { o.classList.add("correct"); o.textContent = "✓ " + o.textContent; }
+          else if (o === btn) { o.classList.add("wrong"); o.textContent = "✗ " + o.textContent; }
+          o.disabled = true; o.style.cursor = "default";
+        });
+        if (explain) explain.style.display = "block";
+      });
+    });
+  </script>
+  <script type="application/json" id="spec-raw">__SPEC_JSON__</script>
+</body>
+</html>

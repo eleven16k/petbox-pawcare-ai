@@ -1,0 +1,70 @@
+{
+  "meta": { "demo": true, "note": "猫减脂食谱全链路合成数据；形状对齐：档案=PetArchivesVO 摘要、方案=AgentRecipeGenerateService 输出契约、营养计划=PetBaseDietaryVO、分组/营养=PetRecipeShareSnapshotVO、体重=PetWeightRecordVO。严禁放入真实用户数据。" },
+  "pet": {
+    "name": "咪咪",
+    "speciesText": "猫",
+    "breed": "英国短毛猫",
+    "stageText": "成年 · 已绝育",
+    "ageMonths": 48,
+    "sexText": "母",
+    "weight": 5.2,
+    "expectWeight": 4.2,
+    "bcs": 7,
+    "howActiveText": "慵懒",
+    "allergensText": "无已知过敏",
+    "healthText": "健康"
+  },
+  "recipe": {
+    "recipeName": "鸡胸南瓜减脂餐",
+    "description": "高蛋白适中脂肪，南瓜提供膳食纤维增强饱腹感，适配绝育成年猫温和减重",
+    "categories": [
+      { "categoryName": "白肉", "foods": [
+        { "name": "鸡胸肉", "reason": "低脂高蛋白，减脂期主力蛋白源" },
+        { "name": "去皮鸡腿肉", "reason": "适口性好，补充必需脂肪酸" }
+      ]},
+      { "categoryName": "蔬果", "foods": [
+        { "name": "南瓜", "reason": "膳食纤维促饱腹，缓解减脂期乞食" },
+        { "name": "西葫芦", "reason": "低热量补水" }
+      ]},
+      { "categoryName": "内脏与补充", "foods": [
+        { "name": "鸡心", "reason": "天然牛磺酸来源，猫必需" },
+        { "name": "蛋黄", "reason": "卵磷脂与维生素 D" }
+      ]}
+    ],
+    "supplementAdvice": "食补优先；每 100g 添加蛋壳粉 0.6g 平衡钙磷，犬猫通用钙磷比 1.1:1 左右"
+  },
+  "plan": {
+    "weight": 5.2,
+    "energy": 234,
+    "protein": 20.4,
+    "fat": 6.8,
+    "fiber": 2.4,
+    "calcium": 0.52,
+    "phosphorus": 0.45,
+    "meals": 3
+  },
+  "groups": [
+    { "name": "鸡胸肉", "pct": 55, "g": 165, "items": [ { "n": "鸡胸肉", "g": 130 }, { "n": "去皮鸡腿肉", "g": 35 } ] },
+    { "name": "蔬果", "pct": 25, "g": 75, "items": [ { "n": "南瓜", "g": 50 }, { "n": "西葫芦", "g": 25 } ] },
+    { "name": "内脏蛋黄", "pct": 20, "g": 60, "items": [ { "n": "鸡心", "g": 40 }, { "n": "蛋黄", "g": 20 } ] }
+  ],
+  "nutrients": [
+    { "name": "粗蛋白", "unit": "g", "intake": 20.4, "recommend": 18.8, "lower": 15.1, "upper": null, "status": "ok" },
+    { "name": "粗脂肪", "unit": "g", "intake": 6.8, "recommend": 7.5, "lower": 5.5, "upper": 9.3, "status": "ok" },
+    { "name": "钙", "unit": "g", "intake": 0.52, "recommend": 0.48, "lower": 0.24, "upper": 1.2, "status": "ok" },
+    { "name": "牛磺酸", "unit": "mg", "intake": 210, "recommend": 250, "lower": 200, "upper": null, "status": "low" }
+  ],
+  "supplements": [
+    { "n": "蛋壳粉", "d": "每 100g 食材 0.6g" },
+    { "n": "三文鱼油", "d": "每日 500mg" }
+  ],
+  "makeTips": [
+    "食材隔水蒸熟，保留蒸汁拌回，别加盐和调料",
+    "7 天过渡换粮：新旧餐按 2:8 起步逐日调",
+    "每周同一时间称重一次，记录趋势"
+  ],
+  "weights": {
+    "labels": ["第1周", "第2周", "第3周", "第4周", "第5周", "第6周", "第7周"],
+    "points": [5.6, 5.55, 5.5, 5.4, 5.35, 5.3, 5.2]
+  }
+}

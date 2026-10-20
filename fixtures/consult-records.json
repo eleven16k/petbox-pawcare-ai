@@ -1,0 +1,30 @@
+{
+  "meta": { "demo": true, "note": "健康咨询/记录盘点样例。形状对齐 PetWeightRecordVO / PetPooRecordVO（shape 0-6 / color 0-7 / smell 0-4，recordTime 为 yyyyMMdd 数字）。" },
+  "pet": {
+    "name": "咪咪",
+    "speciesText": "猫",
+    "stageText": "成年 · 已绝育",
+    "weight": 5.2
+  },
+  "poo": {
+    "softCount": 2,
+    "days": 7,
+    "records": [
+      { "shape": 2, "color": 2, "smell": 2, "dateText": "10-13", "note": "换粮第二天" },
+      { "shape": 3, "color": 3, "smell": 1, "dateText": "10-15" },
+      { "shape": 2, "color": 2, "smell": 2, "dateText": "10-17" }
+    ],
+    "shapeTrend": { "label": "近 7 次便便形状（1水样 2糊 3成型 4干硬）", "points": [3, 3, 3, 2, 3, 2, 2] },
+    "colorTrend": { "label": "近 7 次便便颜色", "points": [3, 3, 2, 3, 3, 2, 2] }
+  },
+  "water": {
+    "todayMl": 58,
+    "targetMl": 230,
+    "note": "干粮为主，饮水常偏低"
+  },
+  "weights": {
+    "labels": ["6月", "7月", "8月", "9月", "10月"],
+    "points": [5.0, 5.05, 5.1, 5.15, 5.2]
+  },
+  "summaryText": "近 7 天记录 3 次便便，2 次偏软；体重缓慢上升中"
+}

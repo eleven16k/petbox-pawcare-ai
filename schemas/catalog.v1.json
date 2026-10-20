@@ -1,0 +1,89 @@
+{
+ "version": 1,
+ "maxBlocks": 14,
+ "note": "对话生成式界面块目录（catalog v1）。单一事实源：CatalogPromptBuilder 由本文件生成系统提示；SpecValidator 的结构与数值 $ref 约束与此对应（校验逻辑在代码侧按 type 实现）。只增不改（历史会话 spec 回放依赖 version 兼容）。",
+ "blocks": {
+  "section-title": {
+   "description": "分节标题。用于卡片内分区（如「本周便便」「建议」），带 emoji 时直接写在 text 里",
+   "props": {
+    "text": "string，必填，≤30字"
+   }
+  },
+  "stat-grid": {
+   "description": "关键数字宫格，2-3 个。展示核心指标（次数/达标率/克数）。value 必须用 $ref 引用实时数据",
+   "props": {
+    "items": "数组(2-3)，每项 {label: string, value: {$ref} 数值, unit?: string}"
+   }
+  },
+  "kv-list": {
+   "description": "键值对列表，用于档案式信息展示（键 ≤8 字，值 ≤16 字）",
+   "props": {
+    "rows": "数组(≤8)，每项 {key: string, value: string 或 {$ref}}"
+   }
+  },
+  "bar-row": {
+   "description": "单条横向进度条（当前值 vs 目标值），如体重进度/饮水达标。current 与 target 必须用 $ref",
+   "props": {
+    "label": "string，必填",
+    "current": "{$ref} 数值，必填",
+    "target": "{$ref} 数值，必填",
+    "unit": "string 可选"
+   }
+  },
+  "trend-lite": {
+   "description": "7 点迷你趋势（纯 CSS 柱状，无需图表库）。points 必须用 $ref 指向数值数组（≤14 个，按时间正序）",
+   "props": {
+    "label": "string 可选",
+    "points": "{$ref} 数值数组，必填",
+    "unit": "string 可选"
+   }
+  },
+  "callout": {
+   "description": "提示/警示条。tone 三档：info（一般提示）/ warn（需要注意）/ danger（危险/就医级）",
+   "props": {
+    "tone": "info|warn|danger，必填",
+    "text": "string，必填，≤120字"
+   }
+  },
+  "food-chip": {
+   "description": "食材标签组，展示推荐/涉及的食材名",
+   "props": {
+    "items": "数组(≤8)，每项 {name: string}"
+   }
+  },
+  "cite-list": {
+   "description": "引用来源列表（知识库/指南条目）",
+   "props": {
+    "items": "数组(≤5)，每项 {title: string, source?: string}"
+   }
+  },
+  "action-button": {
+   "description": "跳转按钮。route 只能取白名单（见提示词），点击进入对应完整页面",
+   "props": {
+    "label": "string，必填，≤10字",
+    "route": "string，必填，白名单路径"
+   }
+  },
+  "text-block": {
+   "description": "说明文字段落（大白话，面向零基础用户），支持换行",
+   "props": {
+    "text": "string，必填，≤200字"
+   }
+  },
+  "quiz-lite": {
+   "description": "单选小测（教学式互动），用户选择后揭示答案与正确项",
+   "props": {
+    "question": "string，必填，≤60字",
+    "options": "字符串数组(2-4)，必填",
+    "answerIndex": "0-3 整数，必填",
+    "explanation": "string，可选，≤60字，揭示答案时的一句原理说明"
+   }
+  },
+  "divider": {
+   "description": "分隔线",
+   "props": {}
+  }
+ },
+ "numericRefRule": "数值类字段（stat-grid.items[].value / bar-row.current / bar-row.target / trend-lite.points）必须写 {\"$ref\":\"data.<路径>\"} 引用实时数据 JSON，禁止写数字字面量——模型不知道也不应该编造真实数字",
+ "layerRule": "每个块可选 layer: 0(默认大白话)/1(进阶)/2(专业)。不写默认 0。0 层必须独立成完整可读的卡片，1/2 层是渐进补充"
+}
