@@ -65,7 +65,11 @@ python3 scripts/api_call.py post /open/agent/records/draft --body \
    `groups:[{name,percent,g,items}]`、`totalWeight/totalKcal/kcalAccuracy`。卡片展示分食材克重时
    一律 $ref 指向 portions，禁止自行按比例拆分总量；口径标注「生重（未烹饪）」。
    渲染纪律不变：数值 $ref 指向本响应；`selection.alignment.confirm` 项须在卡片中透明标注。
-4. 超限（1_004_003_127）：如实告知"本月生成次数已用完"，**禁止**用 fixtures 冒充本月真数据重试。
+4. **验算与落库（2026-10-20 上线）**：响应含 `verification{reportId, verifyFinal, report}`——
+   服务端已对方案做确定性 + NRC 全量复核并落库存档（回小程序「验算存档」可查）。
+   `verifyFinal=fail`（如单一食材方案缺肝脏营养）时**如实告知不达标**，建议补充食材类别重新生成；
+   禁止把 fail 方案说成"营养均衡"，也禁止美化结论。
+5. 超限（1_004_003_127）：如实告知"本月生成次数已用完"，**禁止**用 fixtures 冒充本月真数据重试。
 
 响应 JSON 原样存盘后即可作为 render_html.py 的 `--data`：
 

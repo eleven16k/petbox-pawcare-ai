@@ -5,9 +5,21 @@ display_name_en: PetBox AI PawCare
 description: 它盒 PetBox 生成式界面技能——为宠物食谱生成、食谱分析、健康咨询三大业务生成结构化界面卡片（spec JSON）并渲染为可直接打开的 preview.html。当用户要求生成/展示宠物食谱、分析食谱营养、或咨询宠物健康问题并希望以卡片界面呈现结果时使用。
 description_zh: 它盒 PetBox 生成式界面技能：为宠物食谱生成、食谱分析、健康咨询三大业务生成结构化界面卡片（spec JSON）并渲染为可直接打开的 preview.html。当用户要求生成/展示宠物食谱、分析食谱营养、或就宠物健康问题生成卡片式解答时使用。
 description_en: PetBox generative-UI skill — builds structured UI cards (spec JSON) for three workflows (pet recipe generation, recipe/nutrition analysis, health consultation) and renders a self-contained preview.html. Use when the user asks to create or show a pet recipe, analyze recipe nutrition, or wants a card-style answer to a pet health question.
-version: 1.2.0
+version: 1.3.0
 author: 它盒 PetBox
 ---
+
+# 功能总览（用户能做什么）
+
+| # | 能力 | 用户怎么说 | 数据 |
+|---|---|---|---|
+| 1 | 鲜食食谱生成（含每种食材克重 + NRC 复核结论） | 「帮我看看我家猫最近的体重，生成一份减脂食谱」 | demo fixtures / live |
+| 2 | 食谱/营养分析（缺口与超标结论） | 「这份狗粮配方营养达标吗？」 | demo fixtures / live |
+| 3 | 健康咨询 + 急症分诊（急症只出就医卡） | 「狗后腿站不起来呼吸快」 | 规则判定，不计次 |
+| 4 | 查询真实档案与记录（live） | 「列出我所有宠物」「皮皮最近便便怎么样」 | 需接入码 |
+| 5 | 起草记录（体重/便便/饮水，家长确认后生效） | 「帮我把今天便便记一下」 | 需接入码 + read_write 档 |
+
+三业务的详细流程见下方「三业务入口」；每能力的红线与调用约定见对应 references 文档。
 
 # 红线（先读这个，违反任何一条 = 重做）
 
