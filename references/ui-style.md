@@ -9,7 +9,7 @@
 
 1. **信纸卡**：米白 `#fffdf8`，外层 14px 圆角 + 7px 衬边，内层 9px 圆角 + **航空斜纹边框**（45° 重复渐变：sky-300/slate-300 与纸色相间）。
 2. **信头**：左侧衬线体「**To. {宠物名}的铲屎官**」（`"Playfair Display","Songti SC","STSong",serif`，无网络依赖：无 Playfair 时落到宋体），下缀大写字距行 `FROM TUANHUAN · PETBOX SKILL`（8.5px、.18em、slate-400）。
-3. **邮票位**：右侧 52×58 虚线框（slate-300 虚线、sky-50 底、6px 圆角），内置 🐾 + `PETBOX`（6.5px、.08em）+ 数据徽标（demo=「示例数据」琥珀底 / live=「实时数据」，由 render_html.py `--live` 控制，agent 不要手改）。
+3. **邮票位**：右侧 52×58 虚线框（slate-300 虚线、sky-50 底、6px 圆角），内置 🐾 + `PETBOX`（6.5px、.08em）+ 数据徽标（示例模式=「示例数据」琥珀底 / live=「实时数据」，由 render_html.py `--live` 控制，agent 不要手改）。
 4. **页脚**：虚线分隔 + 大写字距行（同信头语言）。
 
 ## Token 速查（与拍板稿 CSS 变量同源）

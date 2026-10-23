@@ -1,13 +1,13 @@
 # 业务一：食谱生成
 
-demo 数据：`fixtures/cat-weight-loss.json`（猫减脂）、`fixtures/dog-generic.json`（犬通用）。
+示例数据：`fixtures/cat-weight-loss.json`（猫减脂）、`fixtures/dog-generic.json`（犬通用）。
 live 模式（有 PETBOX_API_KEY 且后端端点已上线）：见 `live-mode.md`。
 
 ## 流程
 
 1. **对话收集档案**（缺什么问什么，别一次问一堆）：
    物种 → 年龄/生命周期阶段 → 当前体重与目标体重 → 体态评分（BCS 1-9，不知道就问"肋骨摸不摸得到"）→ 绝育 → 活动量 → 健康标签（过敏/肾病/孕期等）。
-2. **选数据源**：live → `POST /open/agent/recipe/plan`（服务端 GA 配比 + 营养引擎 + Jev 门，agent 不算任何营养值）；demo → 选对应 fixtures 文件。
+2. **选数据源**：live → `POST /open/agent/recipe/plan`（服务端 GA 配比 + 营养引擎 + Jev 门，agent 不算任何营养值）；示例模式 → 选对应 fixtures 文件。
 3. **组装 spec**（数值一律 `{"$ref":"data.<路径>"}`）：
 
 ```

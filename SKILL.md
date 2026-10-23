@@ -13,8 +13,8 @@ author: 它盒 PetBox
 
 | # | 能力 | 用户怎么说 | 数据 |
 |---|---|---|---|
-| 1 | 鲜食食谱生成（含每种食材克重 + NRC 复核结论） | 「帮我看看我家猫最近的体重，生成一份减脂食谱」 | demo fixtures / live |
-| 2 | 食谱/营养分析（缺口与超标结论） | 「这份狗粮配方营养达标吗？」 | demo fixtures / live |
+| 1 | 鲜食食谱生成（含每种食材克重 + NRC 复核结论） | 「帮我看看我家猫最近的体重，生成一份减脂食谱」 | 示例数据 / live |
+| 2 | 食谱/营养分析（缺口与超标结论） | 「这份狗粮配方营养达标吗？」 | 示例数据 / live |
 | 3 | 健康咨询 + 急症分诊（急症只出就医卡） | 「狗后腿站不起来呼吸快」 | 规则判定，不计次 |
 | 4 | 查询真实档案与记录（live） | 「列出我所有宠物」「皮皮最近便便怎么样」 | 需接入码 |
 | 5 | 起草记录（体重/便便/饮水，家长确认后生效） | 「帮我把今天便便记一下」 | 需接入码 + read_write 档 |
@@ -24,10 +24,10 @@ author: 它盒 PetBox
 # 红线（先读这个，违反任何一条 = 重做）
 
 1. **数值永不编造**：stat-grid.value / bar-row.current·target / trend-lite.points
-   必须写 `{"$ref":"data.<路径>"}`；数据只来自 `fixtures/`（demo）或 live API 响应。
+   必须写 `{"$ref":"data.<路径>"}`；数据只来自 `fixtures/`（示例模式）或 live API 响应。
 2. **急症优先**：用户消息命中急症关键词表（references/business-consult.md）
    → 只输出一个 danger callout 就医卡，不装其他卡、不做诊断、不做食谱。
-3. **demo 必须标注**：用 fixtures 数据时徽标保持「示例数据」；live 数据才加 `--live`。
+3. **示例数据强制标注**：用 fixtures 数据时徽标保持「示例数据」；live 数据才加 `--live`。
    档位型（序数）数据展示必须带方向图例。
 4. **不过校验不渲染**：组装完必须跑
    `python3 scripts/validate_spec.py spec.json --data <数据文件>`，通过才进渲染。
@@ -55,7 +55,7 @@ author: 它盒 PetBox
 ② 收集输入：食谱类收集档案（缺什么问什么）；分析类拿食谱清单；咨询类判断行动型/咨询型。
 ③ 选数据源：
    有 PETBOX_API_KEY 且端点在线 → live（references/live-mode.md）；
-   否则 → demo：从 fixtures/ 选最贴近的一份（cat-weight-loss / dog-generic /
+   否则 → 示例模式：从 fixtures/ 选最贴近的一份（cat-weight-loss / dog-generic /
    analysis-sample / consult-records）。
 ④ 组装 spec.json：version=1、title≤12字、blocks≤14、11 块白名单、数值全 $ref
    （语法与限制见 schemas/spec.schema.json 与 schemas/catalog.v1.json）。
@@ -70,8 +70,8 @@ author: 它盒 PetBox
 
 # 降级纪律（任何失败不阻塞对话）
 
-校验重试 ≤2 次 → 剔块 → 纯文字。live 拿不到数据 → demo 兜底但必须标「示例数据」；
-禁止用 demo 数值冒充真数据；禁止绕配额重试。
+校验重试 ≤2 次 → 剔块 → 纯文字。live 拿不到数据 → 示例模式兜底但必须标「示例数据」；
+禁止用示例数据冒充真数据；禁止绕配额重试。
 
 # 依赖
 

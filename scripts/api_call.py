@@ -65,7 +65,7 @@ def main():
     key = load_key()
     if not key:
         print("❌ 未设置 PETBOX_API_KEY 环境变量——小程序「我的 → Agent 接入」生成后再试；"
-              "或直接使用 demo 模式（fixtures 数据，输出须标注「示例数据」）")
+              "或直接使用 示例模式（fixtures 数据，输出须标注「示例数据」）")
         sys.exit(2)
 
     # yudao 网关前缀：业务路径缺 /app-api 时自动补齐（2026-10-20 修复：此前裸拼导致
@@ -95,14 +95,14 @@ def main():
             print("❌ 401：API KEY 无效或已被吊销——回小程序「Agent 接入」页重新生成（旧码即刻失效）")
         elif e.code == 429:
             print("❌ 429：配额到顶或会员到期——生成类与小程序共享同一配额池；"
-                  "降级规则见 references/live-mode.md（可用 demo 数据但必须标注「示例数据」）")
+                  "降级规则见 references/live-mode.md（可用 示例数据但必须标注「示例数据」）")
         elif e.code == 403:
             print("❌ 403：当前会员等级无此端点权限（生成类端点需对应档位）")
         else:
             print(f"❌ HTTP {e.code}: {e.read().decode('utf-8', 'replace')[:300]}")
         sys.exit(1)
     except urllib.error.URLError as e:
-        print(f"❌ 网络异常：{e.reason}——live 数据拿不到时降级 demo（必须标注「示例数据」），不要空等重试超过 2 次")
+        print(f"❌ 网络异常：{e.reason}——live 数据拿不到时降级示例模式（必须标注「示例数据」），不要空等重试超过 2 次")
         sys.exit(1)
 
     try:

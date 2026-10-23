@@ -1,10 +1,10 @@
 # 业务二：食谱分析
 
-demo 数据：`fixtures/analysis-sample.json`。
+示例数据：`fixtures/analysis-sample.json`。
 
 ## 流程
 
-1. **确定输入**：用户给食谱（口述食材清单 / 包装标签 / 照片转述）。live → `POST /open/agent/foods/search` 查食材库再算（未上线前用 fixtures 样例演示）；demo → 直接用 fixtures。
+1. **确定输入**：用户给食谱（口述食材清单 / 包装标签 / 照片转述）。live → `POST /open/agent/foods/search` 查食材库再算（未上线前用 fixtures 样例演示）；示例模式 → 直接用 fixtures。
 2. **块组合模板**：
 
 ```

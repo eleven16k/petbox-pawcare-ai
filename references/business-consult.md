@@ -1,6 +1,6 @@
 # 业务三：健康咨询（分诊三分）
 
-demo 数据：`fixtures/consult-records.json`。
+示例数据：`fixtures/consult-records.json`。
 
 ## 第一步永远是分诊（规则写死，不靠模型判断）
 

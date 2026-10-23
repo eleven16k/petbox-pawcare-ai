@@ -255,7 +255,7 @@ def main():
                 .replace("__BODY__", "\n".join(rendered))
                 .replace("__SPEC_JSON__", spec_json)
                 .replace("__DEMO_BADGE__", "实时数据" if args.live else "示例数据")
-                .replace("__FOOT_NOTE__", "" if args.live else " · DEMO"))
+                .replace("__FOOT_NOTE__", ""))
 
     Path(args.out).write_text(html_out, encoding="utf-8")
     total = len(spec.get("blocks", []))
